@@ -1,0 +1,138 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+@font-face {
+    font-family: 'Aldo the Apache';
+    src: url(/static/Assets/AldotheApache.ttf);
+}
+@font-face {
+    font-family: 'Square';
+    src: url(/static/Assets/Square.ttf);
+}
+@font-face {
+    font-family: 'Forgotten Futurist';
+    src: url(/static/Assets/forgotten\ futurist\ rg.ttf);
+}
+body{
+    background: url('Assets/patrick-fore-mMcqMYJfopo-unsplash.jpg') no-repeat center center / cover;
+}
+.nav{
+    background-color: black;
+    padding: 2rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem #e7ffd9;
+}
+.nav div img{
+    width: 12rem;
+}
+.portalMain{
+    width: 70vw;
+    /* height: 75vh; */
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 2.5rem auto;
+    border-radius: 0.4rem;
+    padding: 2rem;
+    box-shadow: 4px 1px 9px white;
+}
+.title{
+    font-size: 4rem;
+    font-family: 'Aldo the Apache', sans-serif;
+    padding-top: 4rem;
+    text-align: center;
+    color: #051f40;
+    border-bottom: #051f40 1px solid;
+    /* text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 15px; */
+}
+.instructions{
+    font-size: 3rem;
+    font-family: 'Square', sans-serif;
+    padding-left: 4rem;
+    padding-top: 4rem;
+    color: #004;
+    /* border-bottom: #18166d 1px solid; */
+        /* text-decoration: underline;
+        text-decoration-thickness: 0.2rem;
+        text-decoration-color: #41489d;
+        text-underline-offset: 1rem; */
+    }
+.instruct{
+    font-size: 2rem;
+    font-family: 'Forgotten Futurist', sans-serif;
+    font-weight: 100;
+    padding-left: 8rem;
+    padding-top: 3rem;
+    color: #004;
+    
+}
+.formBox{
+    font-size: 1.2rem;
+    font-family: 'Square', sans-serif;
+    padding-top: 4rem;
+    color: #004;
+}
+#upload{
+    position: absolute;
+    opacity: 0;
+    left:-1000px;
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+}
+.certiForm{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.text{
+    color: #fff;
+    padding-left: 0.8rem;
+}
+.certiForm input[type=button]{
+    font-family: 'Square', serif;
+    padding: 1rem 2rem;
+    background: #3d3d3d;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+.certiForm input[type=button]:hover{
+    background-color: black;
+}
+#fileLabel{  
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #4b4a73;
+    cursor: pointer;
+    transition: .3s;    
+}
+#fileLabel:hover{
+    background-color: #18166d;
+}
+.footer{
+    font-family: 'Source Serif Pro', serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-top: #e7ffd9 1px solid;
+}
+.heart{
+    display: inline;
+    color: red;
+}
+.link{
+    color: white;
+}

@@ -77,7 +77,7 @@ EVENT = 4
 # sheet = wb_read.active
 
 
-def generate(sheet):
+def generate(sheet, time_stamp):
     count = 0
     max_row = 0
     for row in sheet:
@@ -91,7 +91,7 @@ def generate(sheet):
         event = str(sheet.cell(row=row, column=EVENT).value)
 
         try:
-            path = os.path.join(MEDIA_ROOT, './Certificates/{}'.format(event))
+            path = os.path.join(MEDIA_ROOT, f'./Certificates{time_stamp}/{event}')
             os.makedirs(path)
         except FileExistsError:
             pass

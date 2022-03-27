@@ -1,3 +1,5 @@
+import time
+
 from django.shortcuts import render, redirect
 from django.core.files.storage import default_storage
 from django.http import HttpResponse
@@ -15,24 +17,25 @@ def index(request):
 
 def cert_portal(request):
     if request.method == "POST":
+        unique_time_stamp = str(int(time.time()))
         file = request.FILES['excel_file']
         file_name = default_storage.save(file.name, file)
         loc = (os.path.join(MEDIA_ROOT, f'./{file_name}'))
         wb_read = load_workbook(filename=loc)
         sheet = wb_read.active
 
-        generate(sheet)
+        generate(sheet, unique_time_stamp)
 
         # TODO 126 Dhruv Garg gives an error possibly because of '\t\ char messing with the file path
 
-        zipped_certificates = shutil.make_archive(f'{MEDIA_ROOT}/Certs', 'zip', f'{MEDIA_ROOT}/./Certificates')
-        with open(f'{MEDIA_ROOT}/./Certs.zip', 'rb') as f:
+        zipped_certificates = shutil.make_archive(f'{MEDIA_ROOT}/Certs{unique_time_stamp}', 'zip', f'{MEDIA_ROOT}/./Certificates{unique_time_stamp}')
+        with open(f'{MEDIA_ROOT}/./Certs{unique_time_stamp}.zip', 'rb') as f:
             zipped_certificates = f.read()
         response = HttpResponse(zipped_certificates, content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment; filename="Certificates.zip"'
+        response['Content-Disposition'] = f'attachment; filename="Certificates{unique_time_stamp}.zip"'
 
-        os.remove(os.path.join(MEDIA_ROOT, './Certs.zip'))
-        shutil.rmtree(os.path.join(MEDIA_ROOT, './Certificates'))
+        os.remove(os.path.join(MEDIA_ROOT, f'./Certs{unique_time_stamp}.zip'))
+        shutil.rmtree(os.path.join(MEDIA_ROOT, f'./Certificates{unique_time_stamp}'))
         os.remove(os.path.join(MEDIA_ROOT, file_name))
 
         return response

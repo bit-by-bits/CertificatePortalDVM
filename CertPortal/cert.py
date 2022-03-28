@@ -100,7 +100,7 @@ def generate(sheet, time_stamp):
 
         generate_certificate(name, college, position, event, path)
         count += 1
-        print(str(count) + ": Certificate generated for " + name + ' - ' + college)
+        # print(str(count) + ": Certificate generated for " + name + ' - ' + college)
 
 # generate()
 

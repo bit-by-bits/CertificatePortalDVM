@@ -6,18 +6,18 @@
 }
 @font-face {
     font-family: 'Aldo the Apache';
-    src: url(/static/Assets/AldotheApache.ttf);
+    src: url(/Assets/AldotheApache.ttf);
 }
 @font-face {
     font-family: 'Square';
-    src: url(/static/Assets/Square.ttf);
+    src: url(/Assets/Square.ttf);
 }
 @font-face {
     font-family: 'Forgotten Futurist';
-    src: url(/static/Assets/forgotten\ futurist\ rg.ttf);
+    src: url(/Assets/forgotten\ futurist\ rg.ttf);
 }
 body{
-    background: url('Assets/patrick-fore-mMcqMYJfopo-unsplash.jpg') no-repeat center center / cover;
+    background: url('Assets/patrick-fore-mMcqMYJfopo-unsplash.jpg') center center / cover;
 }
 .nav{
     background-color: black;
@@ -64,7 +64,7 @@ body{
     font-family: 'Forgotten Futurist', sans-serif;
     font-weight: 100;
     padding-left: 8rem;
-    padding-top: 3rem;
+    padding-top: 1rem;
     color: #004;
     
 }
@@ -82,6 +82,9 @@ body{
     height: 1px;
     visibility: hidden;
 }
+.buttons{
+    display: flex;
+}
 .certiForm{
     display: flex;
     align-items: center;
@@ -91,17 +94,18 @@ body{
     color: #fff;
     padding-left: 0.8rem;
 }
-.certiForm input[type=button]{
+.certiForm input[type=submit]{
     font-family: 'Square', serif;
     padding: 1rem 2rem;
     background: #3d3d3d;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: 0.3s;
     border: none;
+    margin-inline: 1rem;
 }
-.certiForm input[type=button]:hover{
+.certiForm input[type=submit]:hover{
     background-color: black;
 }
 #fileLabel{  
@@ -113,11 +117,30 @@ body{
     cursor: pointer;
     transition: .3s;    
 }
+.template a{  
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #4b4a73;
+    cursor: pointer;
+    transition: .3s;  
+    text-decoration: none;  
+    color: white;
+    font-family: 'Square';
+}
+.template a:hover{
+    background-color: #18166d;
+}
+.template{
+    display: flex;
+    justify-content: flex-end;
+}
 #fileLabel:hover{
     background-color: #18166d;
 }
 .footer{
-    font-family: 'Source Serif Pro', serif;
+    font-family: 'Montserrat', serif;
     background-color: black;
     color: white;
     display: flex;
@@ -135,4 +158,53 @@ body{
 }
 .link{
     color: white;
+}
+
+@media (max-width: 1000px) {
+    *{
+        overflow: auto;
+    }
+    .title{
+        font-size: 2em;
+        padding-top: 0.7em;
+    }
+    .certiForm{
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .instructions{
+        font-size: 1.7em;
+        padding-left: 1em;
+    }
+    .instruct{
+        padding-left: 2rem;
+        font-size: 1.1em;
+    }
+    .formBox{
+        font-size: 0.65em;
+        padding-top: 1.4em;
+    }
+    .template a{
+        font-size: 0.7em;
+        padding: 0.9em;
+    }
+    #fileLabel{
+        padding: 0.9em;
+        font-size: 0.8em;
+    }
+    .buttons{
+        margin-top: 1.4em;
+        flex-direction: column;
+        align-items: center;
+    }
+    .certiForm input[type=submit]{
+        padding: 0.8em;
+        font-size: 1.1em;
+        margin-top: 1em;
+    }
+    .template{
+        justify-content: center;
+    }
+
 }

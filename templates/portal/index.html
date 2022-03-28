@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,52 +12,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Nanum+Gothic&family=Rubik:wght@300&family=Source+Serif+Pro:wght@200&display=swap" rel="stylesheet">
-    <script src="/static/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Montserrat:wght@100&family=Nanum+Gothic&family=Rubik:wght@300&display=swap"
+            rel="stylesheet">
 </head>
 
 <body>
-    <div class="nav fixedTop">
-        <div>
-            <img src="../../static/Assets/download.png" alt="">
-        </div>
+<div class="nav fixedTop">
+    <div>
+        <img src="../../static/Assets/download.png" alt="">
     </div>
-    <div class="portalMain">
-        <div class="title">
-            EVENT CERTIFICATE PORTAL
-        </div>
-        <div class="instructions">
-            INSTRUCTIONS
-        </div>
-        <div class="instruct">
-            1.) This <br>
-            2.) That <br>
-            3.) Upload the Excel sheet in this required format in the given field.
-        </div>
-        <div id="formSection">
-            <section class="formBox">
-                <form name="getCerti" method="post" enctype="multipart/form-data" class="certiForm" action="{% url 'CertPortal:download' %}">
-                    {% csrf_token %}
-                    <div id="fileUpload">
-                        <label for="upload" id="fileLabel">
-                            <input type="file" name="excel_file" id="upload" accept=".xls,.xlsx" required>
-                            <i class="fa fa-link link" aria-hidden="true"></i><span class="text">CHOOSE FILE</span>
-                        </label>
+</div>
+<div class="portalMain">
+    <div class="title">
+        EVENT CERTIFICATE PORTAL
+    </div>
+    <div class="instructions">
+        INSTRUCTIONS
+    </div>
+    <div class="template">
+        <a href="../../static/Assets/Winners.xlsx" download="">Download Template.</a>
+    </div>
+    <div class="instruct">
+        1.) Download the Template file from the given box. <br>
+        2.) Enter your details and Upload the Excel sheet in this required format in the given field. <br>
+        3.) Click on your required Certificate Type to generate your certificate.
+    </div>
+    <div id="formSection">
+        <section class="formBox">
+            <form name="getCerti" method="post" class="certiForm" enctype="multipart/form-data" action="{% url 'CertPortal:download' %}" onsubmit="validateForm()">
+                {% csrf_token %}
+                <div id="fileUpload">
+                    <label for="upload" id="fileLabel">
+                        <input type="file" name="excel_file" id="upload" accept=".xls,.xlsx">
+                        <i class="fa fa-link link" aria-hidden="true"></i><span class="text">CHOOSE FILE</span>
+                    </label>
+                </div>
+                <div class="buttons">
+                    <div class="SubmitBut">
+                        <input class="but" type="submit" name="uploadXL" value="Participation Certificate">
                     </div>
                     <div class="SubmitBut">
-                        <input class="but" type="submit" value="DOWNLOAD NOW">
+                        <input class="but" type="submit" name="uploadXL" value="Merit Certificate">
                     </div>
-                </form>
-            </section>
-        </div>
-    </div>
-    <div class="footer">
-        Made with &nbsp;<div class="heart">
-            <i class="fa fa-heart" aria-hidden="true"></i>
-        </div> &nbsp; by DVM.
-    </div>
-
+                </div>
+    </form>
+    </section>
+</div>
+</div>
+<div class="footer">
+    Made with &nbsp;<div class="heart">
+    <i class="fa fa-heart" aria-hidden="true"></i>
+</div> &nbsp; by DVM.
+</div>
+<script src="../../static/script.js"></script>
 </body>
 
 </html>

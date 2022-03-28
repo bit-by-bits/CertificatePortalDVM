@@ -16,8 +16,9 @@ def index(request):
 
 
 def cert_portal(request):
+    # print("received")
     if request.method == "POST":
-        unique_time_stamp = str(int(time.time()))
+        unique_time_stamp = str(float(time.time())).replace('.', '')
         file = request.FILES['excel_file']
         file_name = default_storage.save(file.name, file)
         loc = (os.path.join(MEDIA_ROOT, f'./{file_name}'))
@@ -29,15 +30,23 @@ def cert_portal(request):
         # TODO 126 Dhruv Garg gives an error possibly because of '\t\ char messing with the file path
 
         zipped_certificates = shutil.make_archive(f'{MEDIA_ROOT}/Certs{unique_time_stamp}', 'zip', f'{MEDIA_ROOT}/./Certificates{unique_time_stamp}')
+        # print(f"zipped! {zipped_certificates}")
         with open(f'{MEDIA_ROOT}/./Certs{unique_time_stamp}.zip', 'rb') as f:
             zipped_certificates = f.read()
         response = HttpResponse(zipped_certificates, content_type='application/force-download')
         response['Content-Disposition'] = f'attachment; filename="Certificates{unique_time_stamp}.zip"'
 
-        os.remove(os.path.join(MEDIA_ROOT, f'./Certs{unique_time_stamp}.zip'))
-        shutil.rmtree(os.path.join(MEDIA_ROOT, f'./Certificates{unique_time_stamp}'))
-        os.remove(os.path.join(MEDIA_ROOT, file_name))
-
+        try:
+            os.remove(os.path.join(MEDIA_ROOT, f'./Certs{unique_time_stamp}.zip'))
+            # print(f"removed Certs{unique_time_stamp}.zip")
+            shutil.rmtree(os.path.join(MEDIA_ROOT, f'./Certificates{unique_time_stamp}'))
+            # print(f"removed Certificates{unique_time_stamp}")
+            os.remove(os.path.join(MEDIA_ROOT, file_name))
+            # print(f"removed winners.xlsx")
+        except PermissionError:
+            pass
+            # using this to not stop the program execution and handling WinError32 (Permission Error)
+            # this error is probably fixed since timestamp will give it a unique name but even then if there is an error this will prevent the server from stoppping.
         return response
 
     return redirect('CertPortal:portal')

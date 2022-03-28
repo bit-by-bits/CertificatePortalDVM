@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificate Portal</title>
-    <link rel="icon" href="../../static/Assets/apogee-favicon.ico">
-    <link rel="stylesheet" href="../../static/styles.css">
+    <link rel="icon" href="/static/Assets/apogee-favicon.ico">
+    <link rel="stylesheet" href="/static/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,7 +22,7 @@
 <body>
 <div class="nav fixedTop">
     <div>
-        <img src="../../static/Assets/download.png" alt="">
+        <img src="/static/Assets/download.png" alt="">
     </div>
 </div>
 <div class="portalMain">
@@ -33,7 +33,7 @@
         INSTRUCTIONS
     </div>
     <div class="template">
-        <a href="../../static/Assets/Winners.xlsx" download="">Download Template.</a>
+        <a href="/static/Assets/Winners.xlsx" download="">Download Template.</a>
     </div>
     <div class="instruct">
         1.) Download the Template file from the given box. <br>
@@ -42,7 +42,7 @@
     </div>
     <div id="formSection">
         <section class="formBox">
-            <form name="getCerti" method="post" class="certiForm" enctype="multipart/form-data" action="{% url 'CertPortal:download' %}" onsubmit="validateForm()">
+            <form name="getCerti" method="post" class="certiForm" enctype="multipart/form-data" action="{% url 'CertPortal:download' %}" onsubmit="return validateForm()">
                 {% csrf_token %}
                 <div id="fileUpload">
                     <label for="upload" id="fileLabel">
@@ -67,7 +67,7 @@
     <i class="fa fa-heart" aria-hidden="true"></i>
 </div> &nbsp; by DVM.
 </div>
-<script src="../../static/script.js"></script>
+<script src="/static/script.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 import io
 import os
 import sys
+import re
 
 from openpyxl import load_workbook
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -89,6 +90,16 @@ def generate(sheet, time_stamp):
         college = str(sheet.cell(row=row, column=COLLEGE).value)
         position = str(sheet.cell(row=row, column=POSITION).value)
         event = str(sheet.cell(row=row, column=EVENT).value)
+
+        # Adding regex could fix the problem of special character causing issues with directory and path names
+        # potential solution :
+
+        pattern = r'[^A-Za-z0-9]+'
+        name = re.sub(pattern, '', name)
+        college = re.sub(pattern, '', name)
+        position = re.sub(pattern, '', position)
+        event = re.sub(pattern, '', event)
+
 
         try:
             path = os.path.join(MEDIA_ROOT, f'./Certificates{time_stamp}/{event}')

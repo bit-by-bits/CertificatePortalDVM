@@ -16,7 +16,6 @@ def index(request):
 
 
 def cert_portal(request):
-    # print("received")
     if request.method == "POST":
         unique_time_stamp = str(float(time.time())).replace('.', '')
         file = request.FILES['excel_file']
@@ -26,8 +25,6 @@ def cert_portal(request):
         sheet = wb_read.active
 
         generate(sheet, unique_time_stamp)
-
-        # TODO 126 Dhruv Garg gives an error possibly because of '\t\ char messing with the file path
 
         zipped_certificates = shutil.make_archive(f'{MEDIA_ROOT}/Certs{unique_time_stamp}', 'zip', f'{MEDIA_ROOT}/./Certificates{unique_time_stamp}')
         # print(f"zipped! {zipped_certificates}")

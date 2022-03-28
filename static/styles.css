@@ -1,33 +1,40 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
+
 @font-face {
     font-family: 'Aldo the Apache';
-    src: url(/Assets/AldotheApache.ttf);
+    src: url('/static/Assets/AldotheApache.ttf');
 }
+
 @font-face {
     font-family: 'Square';
-    src: url(/Assets/Square.ttf);
+    src: url('/static/Assets/Square.ttf');
 }
+
 @font-face {
     font-family: 'Forgotten Futurist';
-    src: url(/Assets/forgotten\ futurist\ rg.ttf);
+    src: url('/static/Assets/forgotten_futurist_rg.ttf');
 }
-body{
-    background: url('Assets/patrick-fore-mMcqMYJfopo-unsplash.jpg') center center / cover;
+
+body {
+    background: url('/static/Assets/patrick-fore-mMcqMYJfopo-unsplash.jpg') center center / cover;
 }
-.nav{
+
+.nav {
     background-color: black;
     padding: 2rem;
     box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem #e7ffd9;
 }
-.nav div img{
+
+.nav div img {
     width: 12rem;
 }
-.portalMain{
+
+.portalMain {
     width: 70vw;
     /* height: 75vh; */
     background-color: rgba(255, 255, 255, 0.85);
@@ -36,7 +43,8 @@ body{
     padding: 2rem;
     box-shadow: 4px 1px 9px white;
 }
-.title{
+
+.title {
     font-size: 4rem;
     font-family: 'Aldo the Apache', sans-serif;
     padding-top: 4rem;
@@ -47,54 +55,62 @@ body{
     text-decoration-style: dotted;
     text-underline-offset: 15px; */
 }
-.instructions{
+
+.instructions {
     font-size: 3rem;
     font-family: 'Square', sans-serif;
     padding-left: 4rem;
     padding-top: 4rem;
     color: #004;
     /* border-bottom: #18166d 1px solid; */
-        /* text-decoration: underline;
-        text-decoration-thickness: 0.2rem;
-        text-decoration-color: #41489d;
-        text-underline-offset: 1rem; */
-    }
-.instruct{
+    /* text-decoration: underline;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-color: #41489d;
+    text-underline-offset: 1rem; */
+}
+
+.instruct {
     font-size: 2rem;
     font-family: 'Forgotten Futurist', sans-serif;
     font-weight: 100;
     padding-left: 8rem;
     padding-top: 1rem;
     color: #004;
-    
+
 }
-.formBox{
+
+.formBox {
     font-size: 1.2rem;
     font-family: 'Square', sans-serif;
     padding-top: 4rem;
     color: #004;
 }
-#upload{
+
+#upload {
     position: absolute;
     opacity: 0;
-    left:-1000px;
+    left: -1000px;
     width: 1px;
     height: 1px;
     visibility: hidden;
 }
-.buttons{
+
+.buttons {
     display: flex;
 }
-.certiForm{
+
+.certiForm {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.text{
+
+.text {
     color: #fff;
     padding-left: 0.8rem;
 }
-.certiForm input[type=submit]{
+
+.certiForm input[type=submit] {
     font-family: 'Square', serif;
     padding: 1rem 2rem;
     background: #3d3d3d;
@@ -105,41 +121,48 @@ body{
     border: none;
     margin-inline: 1rem;
 }
-.certiForm input[type=submit]:hover{
+
+.certiForm input[type=submit]:hover {
     background-color: black;
 }
-#fileLabel{  
+
+#fileLabel {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
     background-color: #4b4a73;
     cursor: pointer;
-    transition: .3s;    
+    transition: .3s;
 }
-.template a{  
+
+.template a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
     background-color: #4b4a73;
     cursor: pointer;
-    transition: .3s;  
-    text-decoration: none;  
+    transition: .3s;
+    text-decoration: none;
     color: white;
     font-family: 'Square';
 }
-.template a:hover{
+
+.template a:hover {
     background-color: #18166d;
 }
-.template{
+
+.template {
     display: flex;
     justify-content: flex-end;
 }
-#fileLabel:hover{
+
+#fileLabel:hover {
     background-color: #18166d;
 }
-.footer{
+
+.footer {
     font-family: 'Montserrat', serif;
     background-color: black;
     color: white;
@@ -152,58 +175,69 @@ body{
     left: 0;
     border-top: #e7ffd9 1px solid;
 }
-.heart{
+
+.heart {
     display: inline;
     color: red;
 }
-.link{
+
+.link {
     color: white;
 }
 
 @media (max-width: 1000px) {
-    *{
+    * {
         overflow: auto;
     }
-    .title{
+
+    .title {
         font-size: 2em;
         padding-top: 0.7em;
     }
-    .certiForm{
+
+    .certiForm {
         flex-direction: column;
         overflow-x: hidden;
     }
 
-    .instructions{
+    .instructions {
         font-size: 1.7em;
         padding-left: 1em;
     }
-    .instruct{
+
+    .instruct {
         padding-left: 2rem;
         font-size: 1.1em;
     }
-    .formBox{
+
+    .formBox {
         font-size: 0.65em;
         padding-top: 1.4em;
     }
-    .template a{
+
+    .template a {
         font-size: 0.7em;
         padding: 0.9em;
     }
-    #fileLabel{
+
+    #fileLabel {
         padding: 0.9em;
         font-size: 0.8em;
     }
-    .buttons{
+
+    .buttons {
         margin-top: 1.4em;
         flex-direction: column;
         align-items: center;
     }
-    .certiForm input[type=submit]{
+
+    .certiForm input[type=submit] {
         padding: 0.8em;
         font-size: 1.1em;
         margin-top: 1em;
     }
-    .template{
+
+    .template {
         justify-content: center;
     }
 

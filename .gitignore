@@ -244,3 +244,4 @@ cython_debug/
 /CertPortal/Winners.xlsx
 /static/.vscode/settings.json
 /static/Assets/Winners.xlsx
+/staticfiles/

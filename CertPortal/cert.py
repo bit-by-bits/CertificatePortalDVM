@@ -96,7 +96,7 @@ def generate(sheet, time_stamp):
 
         pattern = r'[^A-Za-z0-9 ]+'
         name = re.sub(pattern, '', name)
-        college = re.sub(pattern, '', name)
+        college = re.sub(pattern, '', college)
         position = re.sub(pattern, '', position)
         event = re.sub(pattern, '', event)
 

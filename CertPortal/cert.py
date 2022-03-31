@@ -94,7 +94,7 @@ def generate(sheet, time_stamp):
         # Adding regex could fix the problem of special character causing issues with directory and path names
         # potential solution :
 
-        pattern = r'[^A-Za-z0-9]+'
+        pattern = r'[^A-Za-z0-9 ]+'
         name = re.sub(pattern, '', name)
         college = re.sub(pattern, '', name)
         position = re.sub(pattern, '', position)

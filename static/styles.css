@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 @font-face {
@@ -21,10 +20,14 @@
 }
 
 body {
+    overflow-x: hidden;
     background: url('/static/Assets/patrick-fore-mMcqMYJfopo-unsplash.jpg') center center / cover;
 }
 
 .nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
     background-color: black;
     padding: 2rem;
     box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem #e7ffd9;
@@ -38,7 +41,7 @@ body {
     width: 70vw;
     /* height: 75vh; */
     background-color: rgba(255, 255, 255, 0.85);
-    margin: 2.5rem auto;
+    margin: 7rem auto;
     border-radius: 0.4rem;
     padding: 2rem;
     box-shadow: 4px 1px 9px white;
@@ -70,6 +73,8 @@ body {
 }
 
 .instruct {
+    display: flex;
+    flex-direction: column;
     font-size: 2rem;
     font-family: 'Forgotten Futurist', sans-serif;
     font-weight: 100;
@@ -97,10 +102,14 @@ body {
 
 .buttons {
     display: flex;
+    margin: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .certiForm {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -119,7 +128,6 @@ body {
     cursor: pointer;
     transition: 0.3s;
     border: none;
-    margin-inline: 1rem;
 }
 
 .certiForm input[type=submit]:hover {
@@ -186,10 +194,7 @@ body {
 }
 
 @media (max-width: 1000px) {
-    * {
-        overflow: auto;
-    }
-
+    
     .title {
         font-size: 2em;
         padding-top: 0.7em;
@@ -207,6 +212,7 @@ body {
 
     .instruct {
         padding-left: 2rem;
+        gap: 1rem;
         font-size: 1.1em;
     }
 
@@ -232,13 +238,22 @@ body {
     }
 
     .certiForm input[type=submit] {
+        width: max-content;
         padding: 0.8em;
         font-size: 1.1em;
-        margin-top: 1em;
+    }
+
+    #fileupload{
+        margin: 0.5rem;
     }
 
     .template {
+        margin: 1rem;
         justify-content: center;
+    }
+
+    .but{
+        margin: 0;
     }
 
 }

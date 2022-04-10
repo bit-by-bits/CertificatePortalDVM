@@ -16,7 +16,19 @@ def index(request):
 
 
 def cert_portal(request):
+    certs = ['ACHIEVEMENT.pdf', 'CLUB_ASSOC.pdf', 'COORD.pdf', 'Participation.pdf', 'Department.pdf']
+    cert_type = ''
     if request.method == "POST":
+        if 'participation' in request.POST:
+            cert_type = certs[3]
+        elif 'achievement' in request.POST:
+            cert_type = certs[0]
+        elif 'clubassoc' in request.POST:
+            cert_type = certs[1]
+        elif 'coord' in request.POST:
+            cert_type = certs[2]
+        elif 'dept' in request.POST:
+            cert_type = certs[4]
         unique_time_stamp = str(float(time.time())).replace('.', '')
         file = request.FILES['excel_file']
         file_name = default_storage.save(file.name, file)
@@ -24,7 +36,7 @@ def cert_portal(request):
         wb_read = load_workbook(filename=loc)
         sheet = wb_read.active
 
-        generate(sheet, unique_time_stamp)
+        generate(sheet, unique_time_stamp, cert_type)
 
         zipped_certificates = shutil.make_archive(f'{MEDIA_ROOT}/Certs{unique_time_stamp}', 'zip', f'{MEDIA_ROOT}/./Certificates{unique_time_stamp}')
         # print(f"zipped! {zipped_certificates}")

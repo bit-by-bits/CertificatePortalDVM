@@ -12,7 +12,7 @@ from reportlab.lib.pagesizes import A4
 from CertificatePortalDVM.settings import MEDIA_ROOT
 
 
-def generate_certificate(name, college, position, event, path):
+def generate_certificate(name, college, position, event, department, role, path, cert_type):
     """
     All four arguments are strings.
     """
@@ -30,7 +30,7 @@ def generate_certificate(name, college, position, event, path):
     event_width = stringWidth(event, font_name, font_size)
 
     if name_width >= 225:
-        can.drawString(356, 288, name)
+        can.drawString(400, 288, name)
     else:
         can.drawString(468 - name_width / 2, 288, name)
 
@@ -49,7 +49,8 @@ def generate_certificate(name, college, position, event, path):
     # read your existing PDF
     # existing_pdf = PdfFileReader(open("certi.pdf", "rb"), strict=False)
     existing_pdf_loc = os.path.dirname(os.path.abspath(__file__))
-    existing_pdf = PdfFileReader(open(os.path.join(existing_pdf_loc, "certi.pdf"), "rb"), strict=False)
+    # existing_pdf = PdfFileReader(open(os.path.join(existing_pdf_loc, "certi.pdf"), "rb"), strict=False)
+    existing_pdf = PdfFileReader(open(os.path.join(existing_pdf_loc, cert_type), "rb"), strict=False)
     # the script was not able to find the location of the certi.pdf hence this line was modified
 
     output = PdfFileWriter()
@@ -68,6 +69,9 @@ NAME = 1
 COLLEGE = 2
 POSITION = 3
 EVENT = 4
+DEPARTMENT = 5
+ROLE = 6
+
 
 # # parent_dir = os.path.dirname(os.path.abspath(__file__))
 # parent_dir = MEDIA_ROOT
@@ -78,7 +82,7 @@ EVENT = 4
 # sheet = wb_read.active
 
 
-def generate(sheet, time_stamp):
+def generate(sheet, time_stamp, cert_type):
     count = 0
     max_row = 0
     for row in sheet:
@@ -90,6 +94,8 @@ def generate(sheet, time_stamp):
         college = str(sheet.cell(row=row, column=COLLEGE).value)
         position = str(sheet.cell(row=row, column=POSITION).value)
         event = str(sheet.cell(row=row, column=EVENT).value)
+        department = str(sheet.cell(row=row, column=DEPARTMENT).value)
+        role = str(sheet.cell(row=row, column=ROLE).value)
 
         # Adding regex could fix the problem of special character causing issues with directory and path names
         # potential solution :
@@ -99,7 +105,8 @@ def generate(sheet, time_stamp):
         college = re.sub(pattern, '', college)
         position = re.sub(pattern, '', position)
         event = re.sub(pattern, '', event)
-
+        department = re.sub(pattern, '', department)
+        role = re.sub(pattern, '', role)
 
         try:
             path = os.path.join(MEDIA_ROOT, f'./Certificates{time_stamp}/{event}')
@@ -109,7 +116,7 @@ def generate(sheet, time_stamp):
         if college == 'None':
             college = '-'
 
-        generate_certificate(name, college, position, event, path)
+        generate_certificate(name, college, position, event, department, role, path, cert_type)
         count += 1
         # print(str(count) + ": Certificate generated for " + name + ' - ' + college)
 
